@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+    <html lang="ru">
+        <head>
+            <title>PaintBed</title>
+            <meta charset="utf-8">
+        </head>
+            <body>
+                <div style="display:inline">
+                    <div id="red" style="display:inline-block;border-radius: 50%;background:red;width: 50px;height: 50px;">
+                    </div>
+                    
+                    <div id="black" style="display:inline-block;border-radius: 50%;background:black;width: 50px;height: 50px;">
+                    </div>
+
+                    <div id="green" style="display:inline-block;border-radius: 50%;background:green;width: 50px;height: 50px;">
+                    </div>
+
+                    <div id="blue" style="display:inline-block;border-radius: 50%;background:blue;;width: 50px;height: 50px;">
+                    </div>
+
+                    <div id="yellow" style="display:inline-block;border-radius: 50%;background:yellow;;width: 50px;height: 50px;">
+                    </div>
+
+
+                        <div id="eraser">
+                            <button>DELETE ALL</button>
+                        </div>
+
+                        <div id="erasermini">
+                            <button>ERASER</button>
+                        </div>
+                </div>
+              
+                <hr>
+                <canvas id="main-game" ></canvas>
+
+            </body>
+
+                <script>
+                   
+                    const cnv = document.getElementById("main-game");
+                    const ctx = cnv.getContext("2d");
+
+                    cnv.width = innerWidth;
+                    cnv.height = innerHeight;
+
+                    var wf = 10;
+                    var hf = 10
+
+                    var green = document.getElementById("green").onclick = function (event)  {
+                        cnv.onmousedown = function (event) {
+                    cnv.onmousemove = function (event) {
+                        var x = event.offsetX;
+                        var y = event.offsetY;
+                       
+                        
+                        
+                        var colorS = ctx.strokeStyle = "green";
+                       
+                    
+                        ctx.lineWidth = 10;
+                        ctx.lineTo(x,y);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.arc(x,y,20,0,Math.PI * 2)
+                        ctx.beginPath();
+                        ctx.moveTo(x,y);
+                     
+                    }
+                    cnv.onmouseup = function() {
+                        cnv.onmousemove = null;
+                        ctx.beginPath();
+                    }
+                }
+            }
+
+                    var red = document.getElementById("red")
+                        red.onclick = function (event) {
+                            cnv.onmousedown = function (event) {
+                    cnv.onmousemove = function (event) {
+                        var x = event.offsetX;
+                        var y = event.offsetY;
+
+                      
+                      
+                        var color = ctx.strokeStyle = "red";
+                        
+                        ctx.lineWidth = 10;
+                        ctx.lineTo(x,y);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.arc(x,y,20,0,Math.PI * 2)
+                        ctx.beginPath();
+                        ctx.moveTo(x,y);
+                     
+                       
+                        ctx.stroke()
+                    }
+                    cnv.onmouseup = function() {
+                        cnv.onmousemove = null;
+                        ctx.beginPath();
+                    }
+                }
+            }
+            var black = document.getElementById("black").onclick = function () {
+                cnv.onmousedown = function (event) {
+                    cnv.onmousemove = function (event) {
+                        var x = event.offsetX;
+                        var y = event.offsetY;
+
+                          
+                        ctx.lineWidth = 10;
+                        ctx.lineTo(x,y);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.arc(x,y,20,20,Math.PI * 2)
+                        ctx.beginPath();
+                        ctx.moveTo(x,y);
+                     
+
+                        var color = ctx.fillStyle = "black";
+                       
+                       
+                        
+                    }
+                    cnv.onmouseup = function() {
+                        cnv.onmousemove = null;
+                        ctx.beginPath();
+                    }
+                }
+            }
+
+            var blue = document.getElementById("blue").onclick = function () {
+                cnv.onmousedown = function (event) {
+                    cnv.onmousemove = function (event) {
+                        var x = event.offsetX;
+                        var y = event.offsetY;
+
+                        
+
+                        var color = ctx.strokeStyle = "blue";
+                       
+                          
+                        ctx.lineWidth = 10;
+                        ctx.lineTo(x,y);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.arc(x,y,20,0,Math.PI * 2)
+                        ctx.beginPath();
+                        ctx.moveTo(x,y);
+                     
+                        ctx.stroke()
+                    }
+                    cnv.onmouseup = function() {
+                        cnv.onmousemove = null;
+                        ctx.beginPath();
+                    }
+                }
+            }
+
+            var yellow = document.getElementById("yellow").onclick = function () {
+                cnv.onmousedown = function (event) {
+                    cnv.onmousemove = function (event) {
+                        var x = event.offsetX;
+                        var y = event.offsetY;
+
+                        
+
+                        var color = ctx.strokeStyle = "yellow";
+                       
+                          
+                        ctx.lineWidth = 10;
+                        ctx.lineTo(x,y);
+                        ctx.stroke();
+
+                        ctx.beginPath();
+                        ctx.arc(x,y,20,0,Math.PI * 2)
+                        ctx.beginPath();
+                        ctx.moveTo(x,y);
+                     
+                       
+                        ctx.stroke()
+                    }
+                    cnv.onmouseup = function() {
+                        cnv.onmousemove = null;
+                        ctx.beginPath();
+                    }
+                }
+            }
+
+            const eraser = document.getElementById("eraser");
+
+            eraser.onclick = function (event) {
+                window.location.reload();
+                return false;
+            }
+               
+            const erasermini = document.getElementById("erasermini");
+
+            erasermini.onclick = function (event) {
+                cnv.onmousedown = function (event) {
+                    cnv.onmousemove = function (event) {
+                        var x = event.offsetX;
+                        var y = event.offsetY;
+
+                        ctx.fillRect(x,y,10,10);
+
+                        var color = ctx.fillStyle = "white";
+                       
+                       
+                        ctx.fill()
+                    }
+                    cnv.onmouseup = function() {
+                        cnv.onmousemove = null;
+                    }
+                    }
+                }
+
+                    
+            
+                    
+                </script>
+    </html>
